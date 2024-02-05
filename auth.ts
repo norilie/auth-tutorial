@@ -5,7 +5,6 @@ import { db } from '@/lib/db'
 
 import authConfig from '@/auth.config'
 import { getUserById } from '@/data/user'
-import { TbRuler } from 'react-icons/tb'
 
 export const {
   handlers: { GET, POST },
@@ -27,6 +26,10 @@ export const {
   },
   callbacks: {
     async signIn({ user, account }) {
+      console.log({
+        user,
+        account,
+      })
       // Allow OAuth without email verification
       if (account?.provider !== 'credentials') return true
 
