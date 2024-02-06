@@ -52,3 +52,15 @@ model VerificationToken {
 
   @@unique([email, token])
 }
+
+// This is almost the same as above, but should be exist,
+// because of security concern.
+model PasswordResetToken {
+  id String @id @default(cuid())
+  email String
+  token String @unique
+  expires DateTime
+
+  // Unique combination!
+  @@unique([email, token])
+}
